@@ -37,8 +37,8 @@ id serial not null primary key,
 
 create table operation.cards(
 id bigserial not null primary key,
-creationdate timestamp,
-slaStatus text not null,
+creationdate timestamp not null,
+slastatus text not null,
 activitie_id int not null,
 patient_id bigint not null references operation.patients(id),
 healthinsurance_id int not null references operation.healthinsurance(id),
