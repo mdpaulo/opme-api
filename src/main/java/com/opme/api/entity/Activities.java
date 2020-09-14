@@ -27,6 +27,21 @@ public class Activities {
 	private Integer serviceLevelAgreement;
 	
 	public Activities() {}
+	
+	public Activities(JsonObject jsonData) {
+		if(jsonData.get("activityTitle").getAsString() == null || jsonData.get("activityTitle").getAsString().trim().isEmpty()) {
+			throw new IllegalArgumentException("Invalid Value for field activityTitle");
+		}
+		if(jsonData.get("activitySubtitle").getAsString() == null || jsonData.get("activitySubtitle").getAsString().trim().isEmpty()) {
+			throw new IllegalArgumentException("Invalid Value for field activityTitle");
+		}
+		if(jsonData.get("sla").getAsString() == null || jsonData.get("sla").getAsString().trim().isEmpty()) {
+			throw new IllegalArgumentException("Invalid Value for field activityTitle");
+		}
+		this.title = jsonData.get("activityTitle").getAsString();
+		this.subtitle = jsonData.get("activitySubtitle").getAsString();
+		this.serviceLevelAgreement = jsonData.get("sla").getAsInt();
+	}
 
 	@Override
 	public String toString() {

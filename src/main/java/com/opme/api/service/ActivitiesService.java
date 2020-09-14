@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.opme.api.entity.Activities;
 import com.opme.api.repository.ActivitiesRepository;
 
@@ -32,5 +34,9 @@ public class ActivitiesService {
 			result = null;
 		}
 		return result;
+	}
+	
+	public void addActivitie(String jsonActivitieData) throws IllegalArgumentException, JsonParseException, Exception {
+		actRepo.save(new Activities(new JsonParser().parse(jsonActivitieData).getAsJsonObject()));
 	}
 }
